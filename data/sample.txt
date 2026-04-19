@@ -1,0 +1,11 @@
+Artificial Intelligence (AI) is the simulation of human intelligence by machines.
+
+Machine Learning is a subset of AI that allows systems to learn from data.
+
+Deep Learning is a subset of Machine Learning using neural networks.
+
+AWS (Amazon Web Services) is a comprehensive cloud computing platform provided by Amazon.
+
+AWS offers services such as computing power, storage, databases, machine learning, and analytics.
+
+Amazon Bedrock is a service within AWS that provides access to foundation models for building generative AI applications.

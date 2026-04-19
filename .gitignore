@@ -1,2 +1,12 @@
+# Ignore Python cache
 __pycache__/
 *.pyc
+
+# Ignore vector database
+chroma_db/
+
+# Ignore environment files
+.env
+
+# Ignore system files
+.DS_Store

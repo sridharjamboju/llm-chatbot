@@ -1,29 +1,54 @@
 # ollama_client.py
-# Handles communication with the Ollama API
+# Stable + working version (STRICT RAG, no chat mode)
 
 import requests
 from config import MODEL_NAME, OLLAMA_API_URL
 
-def generate_response(prompt):
+
+def generate_response(context, question):
     """
-    Send prompt to Ollama and return the generated response.
+    Generate grounded response using context + question
     """
 
-    response = requests.post(
-        OLLAMA_API_URL,
-        json={
-            "model": MODEL_NAME,
-            "prompt": prompt,
-            "stream": False
-        },
-        timeout=120
-    )
+    try:
+        # Strong grounding prompt
+        prompt = f"""
+You are a strict question-answering system.
 
-    # Check for successful response
-    if response.status_code != 200:
-        raise Exception(f"Ollama HTTP error: {response.status_code} - {response.text}")
+Rules:
+- Answer ONLY from the context below
+- Do NOT use any external knowledge
+- Keep the answer short and exact
+- If answer is not in context, say: I don't know
 
-    result = response.json()
+Context:
+{context}
 
-    # Extract response text safely
-    return result.get("response", "")
+Question:
+{question}
+
+Answer:
+"""
+
+        response = requests.post(
+            OLLAMA_API_URL,
+            json={
+                "model": MODEL_NAME,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": 0
+                }
+            },
+            timeout=120
+        )
+
+        if response.status_code != 200:
+            raise Exception(f"Ollama error: {response.status_code} - {response.text}")
+
+        result = response.json()
+
+        return result.get("response", "").strip()
+
+    except Exception as e:
+        return f"Error: {str(e)}"
