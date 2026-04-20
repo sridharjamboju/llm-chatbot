@@ -1,0 +1,25 @@
+# Core web framework
+flask==3.1.3
+
+# LangChain libraries for AI/LLM application development
+langchain==1.2.10
+langchain-community==0.4.1
+langchain-core==1.3.0
+langchain-ollama==1.1.0
+langchain-chroma==1.1.0
+langchain-text-splitters==1.1.1
+
+# Vector database for storing and retrieving embeddings
+chromadb==1.5.2
+
+# Ollama client for running local LLMs
+ollama==0.6.1
+
+# PDF reading and processing
+pypdf==6.10.2
+
+# Environment variable management (for storing config safely)
+python-dotenv==1.2.2
+
+# HTTP requests library
+requests==2.32.5
