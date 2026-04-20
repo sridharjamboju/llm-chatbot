@@ -1,1 +1,0 @@
-print("My First AI Project")

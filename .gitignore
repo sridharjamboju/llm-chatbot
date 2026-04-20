@@ -10,3 +10,7 @@ chroma_db/
 
 # Ignore system files
 .DS_Store
+
+# Ignore virtual environment
+venv/
+
