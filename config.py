@@ -24,6 +24,9 @@ MODEL_NAME = "qwen2.5:1.5b"
 # you have configured Ollama to run on a different port
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
+# Maximum seconds to wait for Ollama to respond before timing out
+OLLAMA_TIMEOUT = 120
+
 # -------------------------------------------------------------
 # EMBEDDING MODEL SETTINGS
 # Embeddings convert text into numbers so ChromaDB can
